@@ -31,6 +31,32 @@ app.get("/api/status", (req, res) => {
   });
 });
 
+// Challenge 1 - Info aplikasi
+app.get("/api/info", (req, res) => {
+  res.json({
+    framework: "Express",
+    runtime: "Cloudflare Workers",
+    course: "Platform as a Service"
+  });
+});
+
+// Challenge 2 - Waktu server
+app.get("/api/time", (req, res) => {
+  res.json({
+    time: new Date().toISOString()
+  });
+});
+
+// Challenge 3 - Route parameter
+app.get("/hello/:name", (req, res) => {
+  const { name } = req.params;
+
+  res.json({
+    message: `Hello, ${name}!`,
+    platform: "Cloudflare Workers"
+  });
+});
+
 app.listen(3000);
 
 export default httpServerHandler({ port: 3000 });
